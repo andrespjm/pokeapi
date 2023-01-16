@@ -34,7 +34,7 @@ export class PokemonlistComponent implements OnInit {
 
   onFilter(valueInput: string) {
     this.page = 0;
-    this.filterValue = valueInput;
+    this.filterValue = valueInput.trim();
   }
 
   private entries() {
