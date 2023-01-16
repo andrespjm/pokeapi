@@ -3,11 +3,11 @@
     </h1>
 
     <!-- Filtro Input-->
-    <input type="text" id="default-input"
+    <input type="text" [ngModel]="filterValue" (ngModelChange)="onFilter($event)"
         class=" flex-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5"
         placeholder="Filter by name...">
-</div>
 
+</div>
 <!-- Table Pokemons list -->
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -29,15 +29,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr *ngFor="let pokemon of pokemons | filtro:page:filterValue"
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th class="px-6 py-4">
-                    Sliver
+                    {{pokemon.id}}
                 </th>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    {{pokemon.name}}
                 </td>
                 <td class="px-6 py-4">
-                    <img src="https://picsum.photos/200/300" class="rounded-full w-[80px] h-[80px]" alt="">
+                    <img [src]="pokemon.urlImg"
+                        onerror="this.onerror=null; this.src='https://cdn.iconscout.com/icon/free/png-256/pokemon-pokeball-pikachu-thunder-electric-shock-32217.png'"
+                        class="rounded-full w-[80px] h-[80px]" alt="">
 
                 </td>
                 <td class="px-6 py-4 text-center">
@@ -51,18 +54,21 @@
 
 </div>
 
+
 <!-- Pagination -->
 <div class="flex mt-5 flex-col items-center">
     <!-- Help text -->
     <span class="text-sm text-gray-700 dark:text-gray-400">
-        Showing <span class="font-semibold text-gray-900 dark:text-white">1</span> to <span
-            class="font-semibold text-gray-900 dark:text-white">10</span> of <span
-            class="font-semibold text-gray-900 dark:text-white">100</span> Entries
+        Showing <span class="font-semibold text-gray-900 dark:text-white">{{page + 1}}</span> to <span
+            class="font-semibold text-gray-900 dark:text-white">{{page + offset}}</span> of <span
+            class="font-semibold text-gray-900 dark:text-white">{{totalEntries}}</span> Entries -
+        <span class="font-semibold text-gray-900 dark:text-white">{{totalPage}}</span> Pages
     </span>
     <div class="inline-flex mt-2 xs:mt-0">
         <!-- Buttons -->
         <button
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="prevPage()">
             <svg aria-hidden="true" class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -72,7 +78,8 @@
             Prev
         </button>
         <button
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-gray-800 border-0 border-l border-gray-700 rounded-r hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            (click)="nextPage()" [disabled]="!(pokemons | filtro:page:filterValue).length">
             Next
             <svg aria-hidden="true" class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
