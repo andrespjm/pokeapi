@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://external-preview.redd.it/NXrR_qnMRHrwUoE8pbeiX26fq4mNctFsmdEghRVApSQ.jpg?auto=webp&s=b18e1b0df84f417036d4e1ac0affb6245a071ebf');
+    background-size: cover;
+}
+
+  @media(max-width: 768px){
+   body{
+    background-image: none;
+    background-color: #18181b;
+   }
+}
+  
+
+   
+
+.drop { filter: drop-shadow(0 2px 5px rgba(255, 255, 255, 0.7)); }
