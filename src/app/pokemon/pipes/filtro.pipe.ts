@@ -14,7 +14,6 @@ export class FiltroPipe implements PipeTransform {
       pokemon.name.includes(filterValue)
     );
 
-    // TODO: Terminar filtro
     return filterPokemon.slice(page, page + offset);
   }
 }
