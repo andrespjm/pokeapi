@@ -43,13 +43,19 @@ export class PokemonService {
   private templatePokemonByName(
     res: FetchPokemonByNameResponse
   ): SimplePokemonByNameI {
+    const id = String(res.id);
     const species = res.species.name;
+    const name = species;
+    const urlImg = res.sprites.front_default;
     const abilities = res.abilities.map((a) => a.ability.name);
     const height = res.height;
     const weight = res.weight;
     const types = res.types.map((t) => t.type.name);
     const base_experience = res.base_experience;
     return {
+      id,
+      name,
+      urlImg,
       abilities,
       species,
       height,

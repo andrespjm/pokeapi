@@ -1,11 +1,12 @@
 <div class="show-pokemons flex mt-8 flex-col md:flex-row">
     <div class="flex-auto w-100 md:w-3/4 md:pr-3">
-        <div class="flex items-center justify-center flex-col md:flex-row">
-            <h1 class="text-4xl font-extrabold dark:text-white mb-5 flex-1 w-100 lg:w-100 lg:flex-1">Pokémons list
+        <div class="flex items-center justify-between flex-col md:flex-row">
+            <h1 class="text-4xl font-extrabold dark:text-white mb-5 flex-1 w-full text-center sm:text-left">Pokémons
+                list
             </h1>
 
             <!-- Filtro Input-->
-            <app-filter (filterPokemon)="onFilter($event)"></app-filter>
+            <app-filter (filterPokemon)="onFilter($event)" class="flex-1 w-full"></app-filter>
 
         </div>
         <!-- Table Pokemons list -->
@@ -36,7 +37,7 @@
                                 {{pokemon.id}}
                             </th>
                             <td scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white capitalize">
                                 {{pokemon.name}}
                             </td>
                             <td class="px-6 py-4">

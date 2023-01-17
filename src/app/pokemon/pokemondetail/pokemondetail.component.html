@@ -1,26 +1,48 @@
-<div *ngIf="inputPokeDatail"
+<div *ngIf="inputPokeDatail; else animation"
     class="w-full max-w-sm bg-white rounded-lg shadow-md bg-gradient-to-r from-blue-400 to-emerald-400">
-    <div class=" rounded-t-lg">
-        <img class="p-8 drop" src="https://scarletviolet.pokemon.com/_images/pokemon/lechonk/pokemon-lechonk.png"
-            alt="product image" />
+    <div class=" rounded-t-lg aspect-w-16 aspect-h-9">
+        <img class="p-8 drop w-full" [src]="inputPokeDatail.urlImg" alt="product image" />
     </div>
     <div class="px-5 pb-5 rounded-lg dark:bg-gray-800 dark:border-gray-700 pt-5">
-        <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white capitalize">
-            {{inputPokeDatail.species}}</h2>
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white capitalize mb-2">
+                {{inputPokeDatail.name}}
+            </h2>
+            <small>
+                <i class="fa-sharp fa-solid fa-star"></i> {{inputPokeDatail.base_experience}}
+            </small>
+        </div>
+        <span *ngFor="let type of inputPokeDatail.types"
+            class="p-2 bg-lime-400 text-slate-800 mr-1 rounded-sm capitalize">
+            {{type}}
+        </span><br>
 
         <ul class="max-w-md mt-5 space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
             <li>
                 <b>Species: {{ inputPokeDatail.species}}</b>
             </li>
             <li>
-                <b>Height: {{ inputPokeDatail.height}} </b>
+                <b>Height: {{ inputPokeDatail.height}} cm </b>
             </li>
             <li>
-                <b>Weight: {{ inputPokeDatail.weight}} </b>
+                <b>Weight: {{ inputPokeDatail.weight}} cm</b>
             </li>
             <li>
-                <b>Abilities:v{{ inputPokeDatail.abilities}} </b>
+                <b>Abilities: </b>
+                <ul class="pl-3">
+                    <li *ngFor="let ability of inputPokeDatail.abilities">
+                        {{ability}}
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
 </div>
+
+<ng-template #animation>
+    <div class="w-100 rounded-t-lg aspect-w-16 aspect-h-9 mx-auto mt-3 hidden sm:block">
+        <img class="w-full drop"
+            src="https://images.wikidexcdn.net/mwuploads/wikidex/0/02/latest/20221113131941/Ash_%28Viajes_Pok%C3%A9mon%29_2.png"
+            alt="">
+    </div>
+</ng-template>

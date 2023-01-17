@@ -1,3 +1,5 @@
+import { PokemonI } from './pokemon.interface';
+
 export interface FetchPokemonByNameResponse {
   abilities: Ability[];
   base_experience: number;
@@ -19,7 +21,7 @@ export interface FetchPokemonByNameResponse {
   weight: number;
 }
 
-export interface SimplePokemonByNameI {
+export interface SimplePokemonByNameI extends PokemonI {
   abilities: string[];
   species: string;
   height: number;
