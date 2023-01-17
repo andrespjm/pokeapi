@@ -1,23 +1,25 @@
-<div class="w-full max-w-sm bg-white rounded-lg shadow-md bg-gradient-to-r from-blue-400 to-emerald-400">
+<div *ngIf="inputPokeDatail"
+    class="w-full max-w-sm bg-white rounded-lg shadow-md bg-gradient-to-r from-blue-400 to-emerald-400">
     <div class=" rounded-t-lg">
         <img class="p-8 drop" src="https://scarletviolet.pokemon.com/_images/pokemon/lechonk/pokemon-lechonk.png"
             alt="product image" />
     </div>
     <div class="px-5 pb-5 rounded-lg dark:bg-gray-800 dark:border-gray-700 pt-5">
-        <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Lechonk</h2>
+        <h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white capitalize">
+            {{inputPokeDatail.species}}</h2>
 
         <ul class="max-w-md mt-5 space-y-1 text-gray-500 list-none list-inside dark:text-gray-400">
             <li>
-                <b>Species: </b>
+                <b>Species: {{ inputPokeDatail.species}}</b>
             </li>
             <li>
-                <b>Height: </b>
+                <b>Height: {{ inputPokeDatail.height}} </b>
             </li>
             <li>
-                <b>Weight: </b>
+                <b>Weight: {{ inputPokeDatail.weight}} </b>
             </li>
             <li>
-                <b>Abilities: </b>
+                <b>Abilities:v{{ inputPokeDatail.abilities}} </b>
             </li>
         </ul>
     </div>

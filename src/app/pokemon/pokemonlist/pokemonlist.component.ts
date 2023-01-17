@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonI } from '../interfaces/pokemon.interface';
+import { SimplePokemonByNameI } from '../interfaces/pokemonByName.interface';
 import { PokemonService } from '../services/pokemon.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class PokemonlistComponent implements OnInit {
   public totalPage = 0;
   public totalEntries = 0;
   public filterValue = '';
+  public pokeDetail!: SimplePokemonByNameI;
   constructor(private pokemonService: PokemonService) {
     this.entries();
   }
@@ -35,6 +37,12 @@ export class PokemonlistComponent implements OnInit {
   onFilter(valueInput: string) {
     this.page = 0;
     this.filterValue = valueInput.trim();
+  }
+
+  onViewPokemon(name: string): void {
+    this.pokemonService
+      .getPokemoByName(name)
+      .subscribe((data) => (this.pokeDetail = data));
   }
 
   private entries() {

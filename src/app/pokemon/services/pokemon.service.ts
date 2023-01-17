@@ -16,8 +16,6 @@ import {
 })
 export class PokemonService {
   private url = 'https://pokeapi.co/api/v2/pokemon';
-  private urlPicture =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
   private limit = 1500;
 
   constructor(private http: HttpClient) {}
@@ -65,7 +63,9 @@ export class PokemonService {
     const pokemons = res.results.map((pokemon) => {
       const arr = pokemon.url.split('/');
       const id = arr[6];
-      const urlImg = `${this.urlPicture}/${id}.png`;
+      const urlPicture =
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
+      const urlImg = `${urlPicture}/${id}.png`;
       return {
         id,
         name: pokemon.name,
