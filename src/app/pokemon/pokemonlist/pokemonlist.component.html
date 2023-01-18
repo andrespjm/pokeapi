@@ -47,7 +47,8 @@
 
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                <a href="javascript:void(0)"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                     (click)="onViewPokemon(pokemon.name)"><i class="fa-solid fa-eye"></i> View</a>
                             </td>
                         </tr>
@@ -93,6 +94,9 @@
                 </button>
             </div>
         </div>
+
+        <!-- Summary table -->
+        <app-summarytable [inputAllPokeName]="onlyPokeName"></app-summarytable>
     </div>
     <div class="flex-auto w-100 md:w-1/4">
         <app-pokemondetail [inputPokeDatail]="pokeDetail"></app-pokemondetail>

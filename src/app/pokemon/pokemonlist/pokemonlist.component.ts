@@ -17,12 +17,14 @@ export class PokemonlistComponent implements OnInit {
   public totalEntries = 0;
   public filterValue = '';
   public pokeDetail!: SimplePokemonByNameI;
+  public onlyPokeName: string[] = [];
   constructor(private pokemonService: PokemonService) {
     this.entries();
   }
   ngOnInit(): void {
     this.pokemonService.getPokemos().subscribe((data) => {
       this.pokemons = data;
+      this.onlyPokeName = data.map((d) => d.name);
     });
   }
 
