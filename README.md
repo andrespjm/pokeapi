@@ -1,3 +1,22 @@
+
 # ApiPoke Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+Demo: [Aquí](https://comfy-crisp-bd6ed6.netlify.app/)
+
+### Vista - mobil
+
+![Vista del sitio en versión móvil](https://res.cloudinary.com/dyqwtxenu/image/upload/v1674006226/Me/Captura_desde_2023-01-17_20-43-18_k24gwt.png)
+
+### Vista - desktop
+
+![Vista del sitio en versión para pc](https://res.cloudinary.com/dyqwtxenu/image/upload/v1674006567/Me/desktop_zxbscx.png)
+
+
+
+
+
+
+
+
+
+
